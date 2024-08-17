@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Page</title>
+</head>
+<body>
+    <h1>Render Google in iFrame</h1>
+
+    <iframe src="https://google.co.in" id="legit-iframe"></iframe>
+
+    <script>
+        // Simulate a clickjacking attack by overlaying button
+        document
+            .getElementById("overlay-button")
+            .addEventListener("click", () => {
+                console.log("Button Clicked");
+                alert("Button Click");
+            })
+    </script>
+</body>
+</html>

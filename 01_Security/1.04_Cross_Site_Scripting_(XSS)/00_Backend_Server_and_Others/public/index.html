@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://www.example.com/" ></script>
+    <script src="http://unsecure.com/abc.js"></script>
+
+    <script nonce="randomKey">
+        console.log("My trusted inline code!")
+    </script>
+
+    <script>
+        console.log("Untrusted inline code!")
+    </script>
+</head>
+<body>
+    <h2>Namaste</h2>
+</body>
+</html>
