@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Short Polling Example</title>
+</head>
+<body>
+    <h2>Short Polling Example</h2>
+    <div id="data-container"></div>
+
+    <script>
+
+        const getData = async (lastData) => {
+            try {
+                const response = await fetch(`/getData?lastData=${lastData}`);
+                const result = await response.json()
+                console.log(result)
+                document.getElementById('data-container').innerHTML = result.data;
+                getData(result.data);
+            } catch (e) {
+                console.log("failed to get data: ", e)
+                // Please handle error scenario (may be using timeout)
+            }
+        }
+        getData()
+
+    </script>
+</body>
+</html>
