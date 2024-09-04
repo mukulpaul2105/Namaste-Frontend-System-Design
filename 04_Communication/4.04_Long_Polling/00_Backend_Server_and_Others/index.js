@@ -14,8 +14,23 @@ app.get("/", (req, res) => {
 });
 
 app.get('/getData', (req, res) => {
-    res.send("hello")
+    if (data !== req.query.lastData) {
+        res.send({ data })
+    } else {
+        waitingClients.push(res)
+    }
 });
+
+app.get('/updateData', (req, res) => {
+    data = req.query.data
+    while(waitingClients.length > 0) {
+        const cliend = waitingClients.pop()
+        cliend.json({data})
+    }
+    res.send({data: "Updated"})
+});
+
+
 
 app.listen(PORT, () => {
     console.log("called")
