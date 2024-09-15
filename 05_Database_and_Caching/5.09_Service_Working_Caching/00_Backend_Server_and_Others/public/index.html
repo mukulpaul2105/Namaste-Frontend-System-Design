@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Worker Example</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <h2>Hello, Service Worker!</h2>
+    <img src="/image.gif" alt="cached image">
+    <script src="/app.js"></script>
+
+    <script>
+        // Registering Service Worker
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker
+                .register("/sw.js")
+                .then((registration) => {
+                    console.log(
+                        "Service Worker registered with scope: ",
+                        registration.scope
+                    )
+                }).catch((error) => {
+                    console.log("Service Worker registration failed: ", error)
+                })
+        }
+    </script>
+</body>
+</html>
